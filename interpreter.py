@@ -342,7 +342,7 @@ def execute(node, env):
                 formatted_args.append(format_string[i])
                 i += 1
         formatted_string = ''.join(str(arg) for arg in formatted_args)
-        print(formatted_string)
+        print(formatted_string.strip('"'))  # Strip double quotes from the formatted string
     elif node.type == 'if':
         condition = node.children[0]
         true_branch = node.children[1]
