@@ -21,10 +21,8 @@ This project implements an interpreter for a custom language. The interpreter ca
 ### Example Code
 
 ```python
-lower = 0;
 upper = 300;
 step = 20;
-f = lower;
 
 for (f = 0, upper, step) {
     c = (5 / 9) * (f - 32);
