@@ -26,13 +26,21 @@ array[0] = 10;
 array[1] = 5;
 array[2] = 4;
 array[3] = 7;
+array[4] = 2;
 
-target = 7;
-for (i = 0, 4, 1) {
-    if (array[i] == target) {
-        puts("Found target at index %d", i);
+n = 5;
+for (i = 0, n, 1) {
+    k = n - i;
+    k = k - 1;
+    for (j = 0, k, 1) {
+        if (array[j] > array[j+1]) {
+            temp = array[j];
+            array[j] = array[j+1];
+            array[j+1] = temp;
+        }
     }
-    puts("%d", array[i]);
+}
+puts("%d", array);
 }
 ```
 ### Usage

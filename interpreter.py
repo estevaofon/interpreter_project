@@ -380,7 +380,7 @@ def main():
     env = {}
     for stmt in ast:
         execute(stmt, env)
-    print("Environment:", env)  # Output should reflect the correct execution of arithmetic operations and array handling
+    # print("Environment:", env)  # Output should reflect the correct execution of arithmetic operations and array handling
 
 if __name__ == "__main__":
     main()

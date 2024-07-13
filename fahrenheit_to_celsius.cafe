@@ -5,6 +5,6 @@ f = lower;
 
 for (i = 0, 301, step) {
     c = (5 / 9) * (f - 32);
-    puts("%d %d", f, c);
+    puts("Fahrenheit: %d Celsius: %d", f, c);
     f = f + step;
 }
