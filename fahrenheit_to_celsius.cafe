@@ -1,0 +1,10 @@
+lower = 0;
+upper = 300;
+step = 20;
+f = lower;
+
+for (i = 0, 301, step) {
+    c = (5 / 9) * (f - 32);
+    puts("%d %d", f, c);
+    f = f + step;
+}
