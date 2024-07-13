@@ -26,7 +26,7 @@ upper = 300;
 step = 20;
 f = lower;
 
-for (i = 0, 301, step) {
+for (i = 0, upper, step) {
     c = (5 / 9) * (f - 32);
     puts("Fahrenheit: %d Celsius: %d", f, c);
     f = f + step;
