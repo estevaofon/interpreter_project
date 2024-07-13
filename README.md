@@ -42,7 +42,7 @@ for (i = 0, 5, 1) {
 ```python interpreter.py <filename>```
 
 ### Code Overview
-####Tokenizer
+#### Tokenizer
 
 The tokenize function takes source code as input and returns a list of tokens. Each token is a tuple containing a type and the matched value.
 
