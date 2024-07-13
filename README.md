@@ -22,20 +22,17 @@ This project implements an interpreter for a custom language. The interpreter ca
 
 ```python
 int array[5];
-array[0] = 1;
-array[1] = 2;
-array[2] = 3;
-array[3] = 4;
-array[4] = 5;
+array[0] = 10;
+array[1] = 5;
+array[2] = 4;
+array[3] = 7;
 
-if (array[0] == 1) {
-    puts("First element is %d\n", array[0]);
-} else {
-    puts("First element is not 1\n");
-}
-
-for (i = 0, 5, 1) {
-    puts("Array element %d: %d\n", i, array[i]);
+target = 7;
+for (i = 0, 4, 1) {
+    if (array[i] == target) {
+        puts("Found target at index %d", i);
+    }
+    puts("%d", array[i]);
 }
 ```
 ### Usage

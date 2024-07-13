@@ -1,0 +1,13 @@
+int array[5];
+array[0] = 10;
+array[1] = 5;
+array[2] = 4;
+array[3] = 7;
+
+target = 7;
+for (i = 0, 4, 1) {
+    if (array[i] == target) {
+        puts("Found target at index %d", i);
+    }
+    puts("%d", array[i]);
+}
