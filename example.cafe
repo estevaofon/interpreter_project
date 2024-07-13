@@ -39,6 +39,7 @@ for (i = 0, 4, 1) {
     }
 }
 
+
 n = 5;
 n = n - 1;
 for (i = 0, n, 1) {
@@ -59,8 +60,4 @@ for (i = 0, n, 1) {
 
 for (i=1, 15, 2){
     puts("%d", i);
-}
-
-for (i=0, 5, 1) {
-    puts("Hello World");
 }

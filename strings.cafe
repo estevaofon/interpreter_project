@@ -1,0 +1,21 @@
+x = "Hello, ";
+y = "world!";
+z = x + y;
+puts("%s", z);
+
+a = 5.5;
+b = 2.3;
+c = a + b;
+puts("The value of c is %f", c);
+
+if (z == "Hello, world!") {
+    puts("The strings were concatenated correctly.");
+} else {
+    puts("There was an error in string concatenation.");
+}
+
+if (c < 10.0) {
+    puts("c is less than 10.0");
+} else {
+    puts("c is greater than or equal to 10.0");
+}

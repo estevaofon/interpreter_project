@@ -18,6 +18,7 @@ token_specification = [
     ('MINUS', r'-'),  # Subtraction operator
     ('TIMES', r'\*'),  # Multiplication operator
     ('DIVIDE', r'\/'),  # Division operator
+    ('FLOAT', r'\d+\.\d+'),  # Floating-point numbers
     ('NUMBER', r'\d+'),  # Integer
     ('CHAR', r"'(.)'"),  # Character literal
     ('ID', r'[A-Za-z]+'),  # Identifiers
@@ -76,16 +77,18 @@ def parse(tokens):
                     node.children.append(index)
                 return node
             elif token[0] == 'NUMBER':
-                return Node('number', token[1])
+                return Node('number', int(token[1]))
+            elif token[0] == 'FLOAT':
+                return Node('float', float(token[1]))
             elif token[0] == 'CHAR':
                 return Node('char', token[1])
+            elif token[0] == 'STRING':
+                return Node('string', token[1].strip('"'))
             elif token[0] == 'LPAREN':
                 expr = parse_expression(tokens)
                 if tokens.pop(0)[0] != 'RPAREN':
                     raise SyntaxError('Expected ")"')
                 return expr
-            elif token[0] == 'STRING':
-                return Node('identifier', token[1].strip('"'))
             else:
                 raise SyntaxError('Unexpected token in term')
 
@@ -296,7 +299,11 @@ def execute(node, env):
         env[identifier][index] = value
     elif node.type == 'number':
         return int(node.value)
+    elif node.type == 'float':
+        return float(node.value)
     elif node.type == 'char':
+        return node.value
+    elif node.type == 'string':
         return node.value
     elif node.type == 'identifier':
         return env[node.value]
@@ -308,6 +315,8 @@ def execute(node, env):
         left = execute(node.children[0], env)
         right = execute(node.children[1], env)
         if node.type == 'PLUS':
+            if isinstance(left, str) and isinstance(right, str):
+                return left + right
             return left + right
         elif node.type == 'MINUS':
             return left - right
@@ -324,18 +333,16 @@ def execute(node, env):
         while i < len(format_string):
             if format_string[i] == '%' and i + 1 < len(format_string):
                 if format_string[i + 1] == 's':
-                    # Handle character array
-                    array_name = args[arg_index]
-                    if isinstance(array_name, str) and array_name in env:
-                        char_array = env[array_name]
-                        string_value = ''.join(char_array).split('\0', 1)[0]
-                        formatted_args.append(string_value)
-                    else:
-                        formatted_args.append(args[arg_index])
+                    # Handle string
+                    formatted_args.append(args[arg_index])
                     arg_index += 1
                     i += 2
                 elif format_string[i + 1] == 'd':
                     formatted_args.append(args[arg_index])
+                    arg_index += 1
+                    i += 2
+                elif format_string[i + 1] == 'f':
+                    formatted_args.append("{:.2f}".format(args[arg_index]))
                     arg_index += 1
                     i += 2
             else:
@@ -380,7 +387,6 @@ def main():
     env = {}
     for stmt in ast:
         execute(stmt, env)
-    # print("Environment:", env)  # Output should reflect the correct execution of arithmetic operations and array handling
 
 if __name__ == "__main__":
     main()
