@@ -21,28 +21,18 @@ This project implements an interpreter for a custom language. The interpreter ca
 ### Example Code
 
 ```python
-int array[5];
-array[0] = 10;
-array[1] = 5;
-array[2] = 4;
-array[3] = 7;
-array[4] = 2;
+lower = 0;
+upper = 300;
+step = 20;
+f = lower;
 
-n = 5;
-for (i = 0, n, 1) {
-    k = n - i;
-    k = k - 1;
-    for (j = 0, k, 1) {
-        if (array[j] > array[j+1]) {
-            temp = array[j];
-            array[j] = array[j+1];
-            array[j+1] = temp;
-        }
-    }
-}
-puts("%d", array);
+for (i = 0, 301, step) {
+    c = (5 / 9) * (f - 32);
+    puts("Fahrenheit: %d Celsius: %d", f, c);
+    f = f + step;
 }
 ```
+
 ### Usage
 ```python interpreter.py <filename>```
 
