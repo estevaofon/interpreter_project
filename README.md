@@ -61,3 +61,15 @@ The parse function takes a list of tokens and constructs an abstract syntax tree
 
 #### Executor
 The execute function takes an AST node and an environment (a dictionary) and performs the corresponding actions. It handles different node types like assignments, array declarations, array accesses, arithmetic operations, puts statements, if statements, and for loops.
+
+Execution Flow
+    ```
+    Tokenization:
+        The tokenize function reads the source code and converts it into a list of tokens.
+
+    Parsing:
+        The parse function takes the list of tokens and converts it into an abstract syntax tree (AST). Each node of the AST represents a construct in the language (e.g., expressions, statements).
+
+    Execution:
+        The execute function recursively traverses the AST and performs the corresponding actions. The environment (env) is a dictionary that stores the values of variables and arrays.
+    ```
